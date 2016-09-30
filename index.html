@@ -125,7 +125,7 @@
                                     <h4 class="subheading">Include the SDK</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Include the <a href="https://developers.facebook.com/docs/javascript">JavaScript SDK</a> on your page once, ideally right after the opening <code>&lt;body&gt;</code> tag. Replace the number after "appId=" with your own app id.</p>
+                                    <p class="text-muted">Include the <a href="https://developers.facebook.com/docs/javascript">JavaScript SDK</a> on your page once, ideally right after the opening <code>&lt;body&gt;</code> tag.</p>
                                     <textarea readonly="1" rows="10" spellcheck="false" onclick="this.focus(); this.select()" dir="ltr" style="direction: ltr;">&lt;div id="fb-root"&gt;&lt;/div&gt;
 &lt;script&gt;(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -146,9 +146,24 @@
                                     <h4>Step III</h4>
                                     <h4 class="subheading">Add the widget</h4>
                                 </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Place this code wherever you want the plugin to appear on your page, replace all the "getbroadly" parts with the url of the business's FB Messenger ID. Feel free to modify the "data-width" and "data-height" attributes to fit your needs.</p>
-                                    <textarea readonly="1" rows="7" spellcheck="false" onclick="this.focus(); this.select()" dir="ltr" style="direction: ltr;">&lt;div class="fb-page" data-href="https://www.facebook.com/getbroadly" data-tabs="messages" data-width="300" data-height="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"&gt;&lt;blockquote cite="https://www.facebook.com/getbroadly" class="fb-xfbml-parse-ignore"&gt;&lt;a href="https://www.facebook.com/getbroadly"&gt;Broadly.com&lt;/a&gt;&lt;/blockquote&gt;&lt;/div&gt;</textarea>
+                                <div class="timeline-body" id="step3">
+                                    <p class="text-muted">Fill the following information and place the generated code wherever you want the plugin to appear on your page.</p>
+                                    <form class="text-muted" action="#step3" onSubmit="return generateCode();">
+                                        <div class="form-group">
+                                            <label for="fbUrl">Facebook Page URL</label>
+                                            <input type="url" class="form-control" id="fbUrl" value="https://www.facebook.com/getbroadly">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="width">Widget Width</label>
+                                            <input type="number" class="form-control" id="width" value="300">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="height">Widget Height</label>
+                                            <input type="number" class="form-control" id="height" value="500">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Generate Code</button>
+                                    </form>
+                                    <textarea readonly="1" rows="10" spellcheck="false" onclick="this.focus(); this.select()" id="code"></textarea>
                                 </div>
                             </div>
                         </li>
@@ -159,8 +174,7 @@
                                     <br>To go!</h4>
                             </div>
                             <div class="timeline-panel">
-                                <div class="timeline-body">
-                                    <div class="fb-page text-muted" data-href="https://www.facebook.com/getbroadly" data-tabs="messages" data-width="300" data-height="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/getbroadly" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/getbroadly">Broadly.com</a></blockquote></div>
+                                <div class="timeline-body" id="frame">
                                 </div>
                             </div>
                         </li>
@@ -195,14 +209,28 @@
 
     <!-- Theme JavaScript -->
     <script src="js/agency.min.js"></script>
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=1807281366177410";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+
+    <script>
+        function generateCode(){
+            var url = document.getElementById('fbUrl').value;
+            var width = document.getElementById('width').value;
+            var height = document.getElementById('height').value;
+
+            var code = '&lt;iframe src="https://www.facebook.com/plugins/page.php?href='+url+'&amp;tabs=messages&amp;width='+width+'&amp;height='+height+'&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId=1807281366177410" width="'+width+'" height="'+height+'" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"&gt;&lt;/iframe&gt';
+            document.getElementById('code').innerHTML = code;
+
+            var iframe = document.createElement('iframe');
+            var src = 'https://www.facebook.com/plugins/page.php?href='+url+'&tabs=messages&width='+width+'&height='+height+'&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1807281366177410';
+            iframe.setAttribute('src',src);
+            iframe.setAttribute('width',width);
+            iframe.setAttribute('height',height);
+            iframe.setAttribute('style','border:none;overflow:hidden');
+            iframe.setAttribute('scrolling','no');
+            iframe.setAttribute('frameborder','0');
+            iframe.setAttribute('allowTransparency','true');
+            document.getElementById('frame').appendChild(iframe);
+        }
+    </script>
 </body>
 
 </html>
