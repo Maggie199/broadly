@@ -8,7 +8,7 @@ input[type=text] {
 }
 
 .navbar-header {
-	background-image: url('../img/logos/logo.png');
+	background-image: url('../img/logos/logo-white.svg');
 	background-size: auto 50px;
 	background-repeat: no-repeat;
 	text-indent: -9999px;
@@ -18,14 +18,40 @@ input[type=text] {
 	padding: 25px 65px;
 }
 
-.navbar-custom.affix, footer {
-	background-color: #ccc;
+.navbar-custom.affix {
+	background-color: #666;
 }
 
+#services {
+	background-image: url('../img/fb-messenger-banner.jpg');
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+	padding: 0;
+}
+
+#services .section-heading, .service-heading{
+	color: #bbb;
+}
+
+#services .text-muted {
+    color: #ddd;
+}
+
+.layer {
+	width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,0.65);
+    padding: 150px 0;
+}
 footer {
+	background-color: #666;
 	text-align: left;
+	color: #eee;
 }
-
 textarea {
 	width: 100%;
 	max-width: 100%;
