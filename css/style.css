@@ -13,8 +13,17 @@ input[type=text] {
 	background-repeat: no-repeat;
 	text-indent: -9999px;
 }
+
 .navbar-brand {
 	padding: 25px 65px;
+}
+
+#mainNav, footer {
+	background-color: #ccc;
+}
+
+footer {
+	text-align: left;
 }
 
 textarea {
