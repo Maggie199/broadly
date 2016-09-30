@@ -117,38 +117,16 @@
                         </li>
                         <li class="timeline-inverted">
                             <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/2.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>Step II</h4>
-                                    <h4 class="subheading">Include the SDK</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Include the <a href="https://developers.facebook.com/docs/javascript">JavaScript SDK</a> on your page once, ideally right after the opening <code>&lt;body&gt;</code> tag.</p>
-                                    <textarea readonly="1" rows="10" spellcheck="false" onclick="this.focus(); this.select()" dir="ltr" style="direction: ltr;">&lt;div id="fb-root"&gt;&lt;/div&gt;
-&lt;script&gt;(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.7&amp;appId=1807281366177410";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));&lt;/script&gt;</textarea>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline-image">
                                 <img class="img-circle img-responsive" src="img/about/3.jpg" alt="">
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>Step III</h4>
+                                    <h4>Step II</h4>
                                     <h4 class="subheading">Add the widget</h4>
                                 </div>
-                                <div class="timeline-body" id="step3">
-                                    <p class="text-muted">Fill the following information and place the generated code wherever you want the plugin to appear on your page.</p>
-                                    <form class="text-muted" action="#step3" onSubmit="return generateCode();">
+                                <div class="timeline-body" id="step2">
+                                    <p class="text-muted">Fill the following information and place the generated code wherever you want the plugin to appear on your page.</p><br>
+                                    <form class="text-muted" action="#result" onSubmit="return generateCode();">
                                         <div class="form-group">
                                             <label for="fbUrl">Facebook Page URL</label>
                                             <input type="url" class="form-control" id="fbUrl" value="https://www.facebook.com/getbroadly">
@@ -157,17 +135,18 @@
                                             <label for="width">Widget Width</label>
                                             <input type="number" class="form-control" id="width" value="300">
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="result">
                                             <label for="height">Widget Height</label>
                                             <input type="number" class="form-control" id="height" value="500">
                                         </div>
                                         <button type="submit" class="btn btn-primary">Generate Code</button>
                                     </form>
+                                    <br>
                                     <textarea readonly="1" rows="10" spellcheck="false" onclick="this.focus(); this.select()" id="code"></textarea>
                                 </div>
                             </div>
                         </li>
-                        <li class="timeline-inverted">
+                        <li>
                             <div class="timeline-image">
                                 <h4>You're
                                     <br>Ready
@@ -228,7 +207,11 @@
             iframe.setAttribute('scrolling','no');
             iframe.setAttribute('frameborder','0');
             iframe.setAttribute('allowTransparency','true');
-            document.getElementById('frame').appendChild(iframe);
+            var frame = document.getElementById('frame');
+            if(frame.hasChildNodes()){
+                frame.removeChild(frame.childNodes[0]);
+            }
+            frame.appendChild(iframe);
         }
     </script>
 </body>
