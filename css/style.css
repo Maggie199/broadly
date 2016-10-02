@@ -40,11 +40,11 @@ footer {
 }
 
 #services .section-heading, .service-heading{
-	color: #bbb;
+	color: #ddd;
 }
 
 #services .text-muted {
-    color: #ddd;
+    color: #bbb;
 }
 
 .layer {
