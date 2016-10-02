@@ -7,6 +7,16 @@ input[type=text] {
     padding: 12px 20px;
 }
 
+textarea {
+	width: 100%;
+	max-width: 100%;
+}
+
+footer {
+	background-color: #666;
+	text-align: left;
+	color: #eee;
+}
 .navbar-header {
 	background-image: url('../img/logos/logo-white.svg');
 	background-size: auto 50px;
@@ -46,13 +56,4 @@ input[type=text] {
     right: 0;
     background: rgba(0,0,0,0.65);
     padding: 150px 0;
-}
-footer {
-	background-color: #666;
-	text-align: left;
-	color: #eee;
-}
-textarea {
-	width: 100%;
-	max-width: 100%;
 }
